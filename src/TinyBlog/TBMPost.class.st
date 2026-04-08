@@ -13,6 +13,21 @@ Class {
 }
 
 { #category : 'as yet unclassified' }
+TBMPost class >> title: aTitle text: aText [
+	^ self new 
+		title: aTitle ;
+		text: aText ;
+		yourself 
+]
+
+{ #category : 'as yet unclassified' }
+TBMPost class >> title: aTitle text: aText category: aCategory [
+	^ (self title: aTitle text: aText )
+		category: aCategory ;
+		yourself 
+]
+
+{ #category : 'as yet unclassified' }
 TBMPost class >> unclassifiedTag [
 	^ 'Unclassified'
 ]
@@ -52,6 +67,16 @@ TBMPost >> initialize [
 	self category: TBMPost unclassifiedTag .
 	self date: Date today.
 	self notVisible 
+]
+
+{ #category : 'testing' }
+TBMPost >> isUnclassified [
+	^ self category = TBMPost unclassifiedTag 
+]
+
+{ #category : 'testing' }
+TBMPost >> isVisible [ 
+	^self visible
 ]
 
 { #category : 'action' }
