@@ -37,6 +37,13 @@ TBMBlog class >> initialize [
 ]
 
 { #category : 'initialization' }
+TBMBlog class >> initializeLocalhostMongoDB [
+	| repository |
+	repository := VOMongoRepository database: 'tiniblog' .
+	repository enableSingleton .
+]
+
+{ #category : 'initialization' }
 TBMBlog class >> initializeVoyageOnMemoryDB [
 	VOMemoryRepository new enableSingleton
 ]
@@ -49,7 +56,7 @@ TBMBlog class >> isVoyageRoot [
 
 { #category : 'initialization' }
 TBMBlog class >> reset [ 
-	self initializeVoyageOnMemoryDB 
+	self initializeLocalhostMongoDB 
 ]
 
 { #category : 'action' }
